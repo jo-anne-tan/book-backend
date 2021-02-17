@@ -66,7 +66,3 @@ Core features:
         [ ] passing of the latest appointment date
 
             [ ] (optional) reminder to both merchant and customer to reschedule/confirm appointment
-            
-
-
-
