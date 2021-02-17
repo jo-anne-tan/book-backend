@@ -8,9 +8,13 @@ This is a personal project to practice and challenge myself to code a full-stack
 You may find the frontend section (still a work in progress!) of this project on my profile.
 
 Core features:
+
 [ ] merchant account
+
     [ ] (optional) manager account
+
     [ ] (optional) staff account
+    
 [ ] customer account
 [ ] sign up, login, logout feature for both accounts
 [ ] merchant page for merchant account
