@@ -2,7 +2,7 @@ import peewee as pw
 from models.staff import Staff
 from models.customer import Customer
 from models.base_model import BaseModel
-from models.shop_services import Shop_services
+from models.shop_service import Shop_service
 
 class Customer_booking(BaseModel):
     shop_service = pw.ForeignKeyField(Shop_services, backref="bookings")
