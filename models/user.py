@@ -24,14 +24,14 @@ class User(BaseModel):
         uppercase = re.search('[A-Z]',self.password)
         number = re.search('[0-9]',self.password)
 
-        if !length:
+        if not length:
             self.errors.append('Password must be at least 8 characters')
-        if !special_char:
+        if not special_char:
             self.errors.append('Password must have at least 1 special character')
-        if !lowercase:
+        if not lowercase:
             self.errors.append('Password must have at least 1 lowercase')
-        if !uppercase:
+        if not uppercase:
             self.errors.append('Password must have at least 1 uppercase')
-        if !number:
+        if not number:
             self.errors.append('Password must have at least 1 number')
             

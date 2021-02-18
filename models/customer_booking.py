@@ -5,7 +5,7 @@ from models.base_model import BaseModel
 from models.shop_service import Shop_service
 
 class Customer_booking(BaseModel):
-    shop_service = pw.ForeignKeyField(Shop_services, backref="bookings")
+    shop_service = pw.ForeignKeyField(Shop_service, backref="bookings")
     customer = pw.ForeignKeyField(Customer, backref="bookings")
     staff = pw.ForeignKeyField(Staff,backref="bookings")
 

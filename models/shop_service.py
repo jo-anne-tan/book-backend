@@ -8,8 +8,8 @@ class Shop_service(BaseModel):
     service = pw.ForeignKeyField(Service, backref="shop_services")
     price = pw.DecimalField(null=False)
     range_km = pw.IntegerField(default="10") # 10 km radius from shop location
-    door_service = pw.BooleanType(default=False)
-    store_service = pw.BooleanType(default=True)
+    door_service = pw.BooleanField(default=False)
+    store_service = pw.BooleanField(default=True)
 
     def validate(self):
         pass
