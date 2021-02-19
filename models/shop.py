@@ -1,5 +1,6 @@
-from models.base_model import BaseModel
+import re
 import peewee as pw
+from models.base_model import BaseModel
 
 class Shop(BaseModel):
     name = pw.CharField(null=False)
@@ -33,13 +34,16 @@ class Shop(BaseModel):
     end_time_2 = pw.TimeField()
 
     def validate(self):
-        # add postcode check - 5 digits
-        # add password check
-        self.email_check()
+        super().email_check(Staff)
+        super().password_check()
+        super().postcode_check()
+        self.time_check()
 
-    def email_check(self):
-        duplicate = Staff.get(Staff.email==self.email)
 
-        if duplicate:
-            if not duplicate.id == self.id: #If the id is not self's id
-                self.errors.append("This email is used by another account. Please use another email.")
+    def time_check(self):
+        if end_time_1<start_time_1:
+            self.errors.append("End time cannot be earlier than start time!")
+
+        if end_time_2 and start_time_2:
+            if end_time_2<start_time_2:
+                self.errors.append("End time cannot be earlier than start time!")
