@@ -13,11 +13,8 @@ class User(BaseModel):
 
     def password_check(self):
         # conditions:
-        # min. 8 char
-        # 1 number
-        # 1 uppercase
-        # 1 lowercase
-        # 1 special character
+        # min. 8 char, 1 number, 1 uppercase, 1 lowercase, 1 special character
+
         length = (len(self.password)>=8)
         special_char = re.search('[\W]', self.password)
         lowercase = re.search('[a-z]',self.password)
