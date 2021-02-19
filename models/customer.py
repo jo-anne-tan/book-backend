@@ -1,3 +1,4 @@
+import re
 import peewee as pw
 from models.user import User
 
@@ -13,12 +14,7 @@ class Customer(User):
     def validate(self):
         super().validate() # invokes User's validate function
         self.email_check()
-
-
-        # add contact_number check
-            # +60 ________
-            # 10-11 digits including first digit 012 345 6789
-            # optional - add phone number otp check (check out pyOTP)
+        self.contact_number_check()
 
     def email_check(self):
         duplicate = Customer.get(Customer.email==self.email)
@@ -26,3 +22,11 @@ class Customer(User):
         if duplicate:
             if not duplicate.id == self.id: #If the id is not self's id
                 self.errors.append("This email is used by another account. Please use another email.")
+
+    def contact_number_check(self):
+        # Optional feature - add OTP check with pyOTP
+        # checks for mobile number 01x-xxxxxxxx 10 & 11 digit format
+        valid = re.search('^[0][1]\d{8,9}$')
+
+        if not valid:
+            self.errors.append("Please enter a valid mobile number")
