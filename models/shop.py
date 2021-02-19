@@ -33,7 +33,13 @@ class Shop(BaseModel):
     end_time_2 = pw.TimeField()
 
     def validate(self):
-        pass
         # add postcode check - 5 digits
         # add password check
-        # add unique email check
+        self.email_check()
+
+    def email_check(self):
+        duplicate = Staff.get(Staff.email==self.email)
+
+        if duplicate:
+            if not duplicate.id == self.id: #If the id is not self's id
+                self.errors.append("This email is used by another account. Please use another email.")
