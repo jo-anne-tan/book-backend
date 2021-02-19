@@ -16,7 +16,7 @@ class Customer_booking(BaseModel):
     time_end = pw.TimeField(null=False)
 
     # acceptance status by manager/staff
-    status = pw.BooleanField(default=False)
+    is_accepted = pw.BooleanField(default=False)
 
     def validate(self):
         pass
