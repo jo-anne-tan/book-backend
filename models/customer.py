@@ -13,15 +13,16 @@ class Customer(User):
 
     def validate(self):
         super().validate() # invokes User's validate function
-        self.email_check()
+        super().email_check(User)
+        super().postcode_check()
         self.contact_number_check()
 
-    def email_check(self):
-        duplicate = Customer.get(Customer.email==self.email)
+    # def email_check(self):
+    #     duplicate = Customer.get(Customer.email==self.email)
 
-        if duplicate:
-            if not duplicate.id == self.id: #If the id is not self's id
-                self.errors.append("This email is used by another account. Please use another email.")
+    #     if duplicate:
+    #         if not duplicate.id == self.id: #If the id is not self's id
+    #             self.errors.append("This email is used by another account. Please use another email.")
 
     def contact_number_check(self):
         # Optional feature - add OTP check with pyOTP
@@ -31,5 +32,3 @@ class Customer(User):
         if not valid:
             self.errors.append("Please enter a valid mobile number")
 
-    def postcode_check(self):
-        valid = re.search('\d{5}$', self.postcode)
