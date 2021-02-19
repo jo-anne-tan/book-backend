@@ -26,7 +26,10 @@ class Customer(User):
     def contact_number_check(self):
         # Optional feature - add OTP check with pyOTP
         # checks for mobile number 01x-xxxxxxxx 10 & 11 digit format
-        valid = re.search('^[0][1]\d{8,9}$')
+        valid = re.search('^[0][1]\d{8,9}$', self.contact_number)
 
         if not valid:
             self.errors.append("Please enter a valid mobile number")
+
+    def postcode_check(self):
+        valid = re.search('\d{5}$', self.postcode)
