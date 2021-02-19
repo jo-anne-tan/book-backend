@@ -6,9 +6,8 @@ class Manager(User):
     shop = pw.ForeignKeyField(Shop, backref="managers")
 
     def validate(self):
-        pass
-        # add unique email check
-        # invoke super() validate (invoke User validate function)
+        super().validate() # invokes User's validate function
+        self.email_check()
 
     def email_check(self):
         duplicate = Manager.get(Manager.email==self.email)

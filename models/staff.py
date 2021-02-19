@@ -6,6 +6,7 @@ class Staff(User):
     shop = pw.ForeignKeyField(Shop, backref = "staff")
 
     def validate(self):
+        super().validate() # invokes User's validate function
         self.email_check()
 
     def email_check(self):

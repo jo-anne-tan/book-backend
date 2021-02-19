@@ -11,7 +11,9 @@ class Customer(User):
     postcode = pw.CharField(null=False)
 
     def validate(self):
+        super().validate() # invokes User's validate function
         self.email_check()
+
 
         # add contact_number check
             # +60 ________
