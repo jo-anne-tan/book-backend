@@ -7,11 +7,4 @@ class Manager(User):
 
     def validate(self):
         super().validate() # invokes User's validate function
-        self.email_check()
-
-    def email_check(self):
-        duplicate = Manager.get(Manager.email==self.email)
-
-        if duplicate:
-            if not duplicate.id == self.id: #If the id is not self's id
-                self.errors.append("This email is used by another account. Please use another email.")
+        super().email_check(Manager)
