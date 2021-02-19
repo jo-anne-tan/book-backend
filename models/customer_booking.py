@@ -24,11 +24,11 @@ class Customer_booking(BaseModel):
         # time check - during shop's operating hours
 
 
-    def datetimecheck(self):
         # ---------------------------------------------------------------------
-        # Leaving aside for now. May be able to implement this simply by 
+        # Leaving this aside for now. May be able to implement this simply by 
         # disabling options based on shop operating hours
         # ---------------------------------------------------------------------
+    def datetimecheck(self):
 
         # This function checks the following:
         # 1. selected booking time is at least 2 hours from now
